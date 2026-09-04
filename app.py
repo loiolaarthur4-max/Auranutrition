@@ -17,7 +17,7 @@ def load_data():
         try:
             with open(DATA_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except:
+        except Exception:
             pass
     return {"preferences": {}, "cart": []}
 
@@ -103,7 +103,7 @@ PRODUCTS = [
         "form": "Cápsula",
         "price": "R$ 45,00",
         "link": "https://lista.mercadolivre.com.br/multivitaminico",
-        "desc": "Vitamins e minerais essenciais para o seu dia a dia."
+        "desc": "Vitaminas e minerais essenciais para o seu dia a dia."
     },
     {
         "id": 4,
@@ -116,7 +116,7 @@ PRODUCTS = [
     }
 ]
 
-# Cabecalho
+# Cabeçalho
 st.title("⚡ Aura Nutrition")
 st.caption("Sua loja oficial de suplementos e performance")
 
@@ -153,7 +153,7 @@ with tab_loja:
                 with col_btn1:
                     st.link_button("Comprar no ML 🔗", p["link"])
                 with col_btn2:
-                    if st.button(f"Adicionar ao Carrinho", key=f"add_{p['id']}"):
+                    if st.button("Adicionar ao Carrinho", key=f"add_{p['id']}"):
                         st.session_state.cart.append(p["name"])
                         save_data()
                         st.success(f"{p['name']} salvo no seu carrinho!")
@@ -231,4 +231,5 @@ with tab_links:
     st.write("Acesse os nossos canais de venda direta e conteúdos adicionais:")
     
     st.markdown("- [Loja Oficial no Mercado Livre](https://www.mercadolivre.com.br)")
-    st.markdown("- [Calculadora de Proteína Diária](https://www
+    st.markdown("- [Calculadora de Proteína Diária](https://www.google.com)")
+    st.markdown("- [Atendimento via WhatsApp](https://whatsapp.com)")
